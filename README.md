@@ -75,6 +75,25 @@ class ReadSingleFile {
 }
 ```
 
+* Dependency Injection
+
+```
+readFile is High level component but not dependent on low level logger component
+Logger object is passed as variable
+
+class ReadSingleFile {
+    getFileData(fileData, logger) {
+        let { file,format } = fileData;
+        try {
+            return fs.readFileSync(file, format);
+        } catch (e) {
+            logger.outPutLog('Error in reading file <'+file+'> '+e);
+        }        
+    }
+}
+
+```
+
 ## YAGNI
 * None of the class calls or requries any extra function / module
 * Modules called upon need basis inside speicific classes 
