@@ -12,7 +12,7 @@
 
 ## SOLID PRINCIPLES 
 
-- Each class has a single responsibility 
+* Each class has a single responsibility 
 
 ```
 var fs = require("fs");

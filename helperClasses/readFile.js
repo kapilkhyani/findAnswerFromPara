@@ -5,7 +5,8 @@ Input : Filename and format
 Output : file content 
 */
 class ReadSingleFile {
-    getFileData(file,format) {
+    getFileData(fileData) {
+        let { file,format } = fileData;
         try {
             return fs.readFileSync(file, format);
         } catch (e) {
