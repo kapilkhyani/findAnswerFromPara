@@ -15,8 +15,7 @@ try {
     
     ([ dataParagraph, dataQuestions, dataAnswers ] = fileData.getProjectFileData());
 } catch (e) {
-    console.log('Error Occured in file fetch '+e.message);
-    exit();
+    throw 'Error Occured in file fetch '+e.message;
 }
 
 dataParagraph = dataParagraph.split(".");

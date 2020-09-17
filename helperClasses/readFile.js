@@ -5,12 +5,12 @@ Input : Filename and format
 Output : file content 
 */
 class ReadSingleFile {
-    getFileData(fileData) {
+    getFileData(fileData, logger) {
         let { file,format } = fileData;
         try {
             return fs.readFileSync(file, format);
         } catch (e) {
-            throw "Error in reading file "+e;
+            logger.outPutLog('Error in reading file <'+file+'> '+e);
         }        
     }
 }
