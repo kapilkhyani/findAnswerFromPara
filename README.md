@@ -54,4 +54,36 @@ class FindSimilarity {
 }
 
 ```
+
+* classes are closed for modification but could be extended
+```
+var fs = require("fs");
+/*
+Meant to read file and return content
+Input : Filename and format
+Output : file content 
+*/
+class ReadSingleFile {
+    getFileData(fileData) {
+        let { file,format } = fileData;
+        try {
+            return fs.readFileSync(file, format);
+        } catch (e) {
+            throw "Error in reading file "+e;
+        }        
+    }
+}
+```
+
+## YAGNI
+* None of the class calls or requries any extra function / module
+* Modules called upon need basis inside speicific classes 
+
+```
+const ReadSingleFile = require('./readFile'); 
+    Inside readfile.js
+
+const stringSimilarity = require('string-similarity');
+    Inside find similarity class
+```
 [![Run on Repl.it](https://repl.it/badge/github/kapilkhyani/findAnswerFromPara)](https://repl.it/github/kapilkhyani/findAnswerFromPara)
