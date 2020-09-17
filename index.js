@@ -1,6 +1,5 @@
-const { FindAnswer, ReadFileData } = require("./findAnswers");
-const { exit } = require("process");
-
+const { FindAnswer } = require("./findAnswers");
+const FetchInputFiles = require("./helperClasses/fetchInputFiles");
 
 let dataParagraph = "";
 let dataQuestions ="";
@@ -8,13 +7,13 @@ let dataAnswers = "";
 
 // if files not given then default files will be picked up
 try {
-    const paragraphFileName = ( typeof(process.argv[2]) !== 'undefined') ? process.argv[2] : 'paragraph.txt';
-    const questionsFileName = ( typeof(process.argv[3]) !== 'undefined') ? process.argv[3] : 'questions.txt';
-    const answersFileName = ( typeof(process.argv[4]) !== 'undefined') ? process.argv[4] : 'answers.txt';
+    const paragraphFileName = ( typeof(process.argv[2]) !== 'undefined') ? process.argv[2] : 'inputFiles/paragraph.txt';
+    const questionsFileName = ( typeof(process.argv[3]) !== 'undefined') ? process.argv[3] : 'inputFiles/questions.txt';
+    const answersFileName = ( typeof(process.argv[4]) !== 'undefined') ? process.argv[4] : 'inputFiles/answers.txt';
     
-    const fileData = new ReadFileData([paragraphFileName,questionsFileName,answersFileName]);
+    const fileData = new FetchInputFiles([paragraphFileName,questionsFileName,answersFileName]);
     
-    ([ dataParagraph, dataQuestions, dataAnswers ] = fileData.getFileData());
+    ([ dataParagraph, dataQuestions, dataAnswers ] = fileData.getProjectFileData());
 } catch (e) {
     console.log('Error Occured in file fetch '+e.message);
     exit();
